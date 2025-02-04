@@ -27,3 +27,78 @@ Vi blir ombedda att installera operativsystemet och då väljer vi iso filen som
 Sedan kan displayen bli svart eller mörkblå, och den kan vara så väldigt länge. Då är det viktigt att inte avbryta processen eftersom windows arbetar i bakgrunden, ha tålamod. 
 
 När vi sedan blir ombedda att klicka oss vidare i windows-installationen så klickar vi oss igenom 
+
+### **Vad gör VirtualBox Guest Additions?**
+**VirtualBox Guest Additions** är en uppsättning drivrutiner och programvara som installeras på gästoperativsystemet (VM:n) för att förbättra prestanda och funktionalitet.
+
+---
+
+### **Fördelar med VirtualBox Guest Additions**
+✅ **Bättre grafikprestanda**  
+   - Aktiverar hårdvaruaccelererad grafik.  
+   - Möjliggör **dynamisk skärmstorlek och fullskärmsläge**.  
+
+✅ **Delade mappar**  
+   - Låter dig dela filer mellan värddatorn och den virtuella maskinen utan att behöva använda nätverksdelning.
+
+✅ **Musintegration**  
+   - Gör att muspekaren **flyter sömlöst** mellan gäst- och värdsystemet utan att behöva trycka på en knapp för att frigöra den.
+
+✅ **Urklippsdelning**  
+   - Kopiera och klistra in mellan gäst- och värddatorn.
+
+✅ **Dra och släpp-funktionalitet**  
+   - Dra och släpp filer mellan värddatorn och den virtuella maskinen.
+
+✅ **Synkroniserad tid**  
+   - Synkroniserar klockan i VM:n med värddatorns systemtid.
+
+✅ **Förbättrad nätverks- och USB-stöd**  
+   - Ger bättre nätverkshantering och stöd för USB-enheter.
+
+---
+
+### **Hur installerar man VirtualBox Guest Additions?**
+1. **Starta din virtuella maskin** (Windows/Linux).
+2. **Öppna menyn "Devices" i VirtualBox**.
+3. Klicka på **"Insert Guest Additions CD Image"**.
+4. Inne i VM:n:
+   - **Windows**: Öppna filen `VBoxWindowsAdditions.exe` och installera.
+   - **Linux**: Montera ISO och kör `VBoxLinuxAdditions.run`.
+5. **Starta om din VM**.
+
+---
+
+**Vill du hjälp att installera det på din Active Directory-labb? 😊**
+
+Guest Additions
+
+NICs vm network 2 st 
+
+Identifiera nätverksadaptrar och döpa om dem till något som går att urskilja lätt.  
+döpa om datorn till något lättare som DC 
+
+
+Ge interna nätverket en IP adress 
+
+## Installera domän
+Add roles and features, installera 
+
+promote to DC  
+add new forest och välja namn och lösenord  
+klicka ut DNS delegation  
+next... install... reboot
+
+## Skapa Admin användare
+öppna active Directory users and computers
+
+högerklicka på domän -> new -> Organizational unit  
+Ge namnet _ADMINS  
+Högerklicka på _ADMINS -> new -> user  
+Fyll i namn och user logon: a-jgrafstrom  
+Skapa password
+högerklicka på user -> properties -> member of -> add  
+enter the object names: Domain Admin -> check name -> apply  
+Logga ut och logga in på admin user  
+
+## RAS/NAT
