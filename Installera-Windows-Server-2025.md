@@ -69,8 +69,6 @@ När vi sedan blir ombedda att klicka oss vidare i windows-installationen så kl
 
 ---
 
-**Vill du hjälp att installera det på din Active Directory-labb? 😊**
-
 Guest Additions
 
 NICs vm network 2 st 
@@ -81,6 +79,10 @@ döpa om datorn till något lättare som DC
 
 Ge interna nätverket en IP adress 
 
+---
+## OS installerat på vm och väl inne på server manager 
+---
+
 ## Installera domän
 Add roles and features, installera 
 
@@ -88,6 +90,8 @@ promote to DC
 add new forest och välja namn och lösenord  
 klicka ut DNS delegation  
 next... install... reboot
+
+---
 
 ## Skapa Admin användare
 öppna active Directory users and computers
@@ -101,4 +105,67 @@ högerklicka på user -> properties -> member of -> add
 enter the object names: Domain Admin -> check name -> apply  
 Logga ut och logga in på admin user  
 
+---
+
 ## RAS/NAT
+
+Add feature role
+
+klicka next och välj **remote access** efter att ha bekräftat rätt server. 
+
+installera och stäng
+
+välj routing på role servises
+
+öppna sen tools upp till höger och välj routing and remote access.
+
+
+
+välj **DC local** med högerklick och klicka configure högst upp 
+
+välj NAT
+
+välj det riktiga internet 
+
+klicka finish
+
+DC local ska vara grön istället för röd.
+
+---
+
+## DHCP Server
+
+new role feature
+
+välj dhcp server istället för remote access och installera
+
+gå in på tools-> dhcp
+
+klicka på domainen som är rödmarkerad
+
+välj ipv4 i dropdown genom att högerklicka och välj new scope
+
+scopename= ip adress range ex 172.16.0.100-200 klicka next
+
+skriv start och end ip adress och sätt subnet till 24
+
+excluded ip adress
+
+ställ in lease time beroende på vilken typ av server tex café
+
+overridea server settings som är valt by default
+
+gateway - skriv in serverns ip adress och klicka add
+
+DNS servern skapas automatiskt med parent domain vilket är vår domain.
+
+låt scopet vara aktiverat med yes som är förvalt
+
+Klicka finish
+
+när det är klart. högerklicka på domain och välj authorize genom att högerklicka och sen refresh också genom högerklick
+
+om allt stämmer bör ipv4 och 6 bli gröna. sen kan man se i scope, address leases, där ser man klienternas leasade ip adresser.
+
+---
+
