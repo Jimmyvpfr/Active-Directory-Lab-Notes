@@ -167,5 +167,8 @@ när det är klart. högerklicka på domain och välj authorize genom att höger
 
 om allt stämmer bör ipv4 och 6 bli gröna. sen kan man se i scope, address leases, där ser man klienternas leasade ip adresser.
 
+Klicka på gula utropstecknet och fullfölj dhcp installationen 
+
 ---
 
+Installera klientdatorer
